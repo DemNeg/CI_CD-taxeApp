@@ -7,37 +7,37 @@ tools {
     }
     stages{
     //Download code from github
-        stage 'download_code_github'{
+        stage ('download_code_github'){
             steps{
                 checkout scm
             }
         }
     //Perform maven clean
-        stage 'maven_clean'{
+        stage ('maven_clean'){
             steps{
                 sh "mvn clean"
             }
         }
         //Perform maven valide
-        stage 'maven_valide'{
+        stage ('maven_valide'){
             steps{
                 sh "mvn valide"
             }
         }
         //Perform maven tests
-        stage 'test' {
+        stage ('test') {
             steps{
                 sh "mvn test"
             }
         }
         //Perform maven package
-        stage 'package'{
+        stage ('package'){
             steps{
                 sh "mvn package"
             }
         }
         //Perform docker build image
-        stage 'docker_build'{
+        stage ('docker_build'){
             steps{
                sh "docker build -t gousindevops/taxeApp ."
             }
