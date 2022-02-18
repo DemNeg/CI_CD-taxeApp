@@ -43,9 +43,4 @@ tools {
             }
         } */
     }
-    post{
-        always{
-            message();
-        }
-    }
 }
