@@ -9,37 +9,37 @@ tools {
     //Download code from github
         stage 'download_code_github'{
             steps{
-                download_code_github();
+                checkout scm
             }
         }
     //Perform maven clean
         stage 'maven_clean'{
             steps{
-                clean();
+                sh "mvn clean"
             }
         }
         //Perform maven valide
         stage 'maven_valide'{
             steps{
-                valide();
+                sh "mvn valide"
             }
         }
         //Perform maven tests
         stage 'test' {
             steps{
-                test();
+                sh "mvn test"
             }
         }
         //Perform maven package
         stage 'package'{
             steps{
-                package();
+                sh "mvn package"
             }
         }
         //Perform docker build image
         stage 'docker_build'{
             steps{
-                docker_build();
+               sh "docker build -t gousindevops/taxeApp ."
             }
         }
         //Perform tasks on ansible master
@@ -53,29 +53,5 @@ tools {
         always{
             message();
         }
-    }
-    //Fonction definition for downloading code from github
-    def download_code_github(){
-        checkout scm
-    }
-    //Function definition to perform maven clean
-    def clean(){
-        sh "mvn clean"
-    }
-    //Function definition to perform maven valide
-    def valide(){
-        sh "mvn valide"
-    }
-    //Function definition to perform maven test
-    def test(){
-        sh "mvn test"
-    }
-    //Function definition to perform maven package
-    def package(){
-        sh "mvn package"
-    }
-    //Function definition to perform docker build image
-    def docker_build(){
-        sh "docker build -t gousindevops/taxeApp ."
     }
 }
