@@ -33,7 +33,7 @@ tools {
         //Perform maven package
         stage 'package'{
             steps{
-                package();
+                maven_package();
             }
         }
         //Perform docker build image
@@ -71,7 +71,7 @@ tools {
         sh "mvn test"
     }
     //Function definition to perform maven package
-    def package(){
+    def maven_package(){
         sh "mvn package"
     }
     //Function definition to perform docker build image
