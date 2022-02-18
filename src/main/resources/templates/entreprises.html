@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template}">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Entreprise</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div>
+        <table class="table">
+            <tr>
+                <th>Code</th>
+                <th>Nom</th>
+                <th>Raison sociale</th>
+                <th>Email</th>
+            </tr>
+            <tr th:each="e:${listeEntreprise}">
+                <td th:text="${e.code}"></td>
+                <td th:text="${e.nom}"></td>
+                <td th:text="${e.raisonSociale}"></td>
+                <td th:text="${e.email}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
