@@ -18,12 +18,6 @@ tools {
                 sh "mvn clean"
             }
         }
-        //Perform maven valide
-        stage ('maven_valide'){
-            steps{
-                sh "mvn valide"
-            }
-        }
         //Perform maven tests
         stage ('test') {
             steps{
