@@ -12,18 +12,6 @@ tools {
                 checkout scm
             }
         }
-    //Perform maven clean
-        stage ('maven_clean'){
-            steps{
-                sh "mvn clean"
-            }
-        }
-        //Perform maven tests
-        stage ('test') {
-            steps{
-                sh "mvn test"
-            }
-        }
         //Perform maven package
         stage ('package'){
             steps{
@@ -36,11 +24,5 @@ tools {
                sh "docker build -t gousindevops/taxeApp ."
             }
         }
-        //Perform tasks on ansible master
-       /*  stage 'excuete_ansible'{
-            steps{
-                exec_ansible();
-            }
-        } */
     }
 }
